@@ -1,0 +1,16 @@
+{application, es3,
+ [{description, "Erlang Simple Storage Service"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, { es3_app, []}},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {maintainers, []},
+  {licenses, ["MIT"]},
+  {links, []}
+ ]}.
