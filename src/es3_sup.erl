@@ -22,5 +22,10 @@ start_link() ->
 init([]) ->
   SupFlags = #{strategy => one_for_all, intensity => 50, period => 300},
   ChildSpecs = [
+    #{
+      id => storage,
+      start => {storage_server, start_link, []},
+      type => worker
+    }
   ],
   {ok, {SupFlags, ChildSpecs}}.

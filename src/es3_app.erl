@@ -10,6 +10,9 @@
 %%====================================================================
 
 start(_StartType, _StartArgs) ->
+    Nodes = application:get_env(es3, nodes, [node()]),
+    ok = metadata:init(Nodes),
+
     es3_sup:start_link().
 
 %%--------------------------------------------------------------------

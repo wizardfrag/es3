@@ -4,4 +4,8 @@ Erlang Simple Storage Service
 
 ## Build
 
-    $ rebar3 compile
+    $ make compile
+
+## Test
+    
+    $ make test

@@ -1,0 +1,4 @@
+[{es3, [
+  { chunk_size, 100 },
+  { nodes, ['es3sl1@{{hostname}}', 'es3sl2@{{hostname}}', 'es3sl3@{{hostname}}'] }
+]}].

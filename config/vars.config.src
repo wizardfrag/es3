@@ -1,0 +1,3 @@
+{chunk_size, 32768}.
+{nodes, "['es3_1@{{hostname}}', 'es3_2@{{hostname}}', 'es3_3@{{hostname}}']"}.
+{cookie, "es3Is50Gud"}.

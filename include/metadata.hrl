@@ -1,0 +1,4 @@
+-record(metadata, {
+  id,
+  chunks
+}).
