@@ -16,11 +16,18 @@ write(Name, Object) ->
 
   Metadata = #metadata{
     id = Name,
-    chunks = ChunkMetadata
+    chunks = ChunkMetadata,
+    size = byte_size(Object)
   },
 
   metadata:insert(Metadata),
-  storage_server:write(Name, Chunks, Metadata).
+  %% The below is to satisfy dialyzer "no local return"
+  case storage_server:write(Name, Chunks, Metadata) of
+    ok ->
+      ok;
+    {error, _Reason} = Err ->
+      Err
+  end.
 
 -spec read(Name) -> Object when
   Name   :: iodata(),

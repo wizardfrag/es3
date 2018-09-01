@@ -6,7 +6,9 @@
   {applications,
    [kernel,
     stdlib,
-    mnesia
+    mnesia,
+    cowboy,
+    jsx
    ]},
   {env,[]},
   {modules, []},

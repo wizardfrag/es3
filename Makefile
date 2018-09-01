@@ -1,4 +1,4 @@
-.PHONY: all rel run compile dialyzer distclean test
+.PHONY: all rel start compile dialyzer distclean test eunit ct start stop
 REBAR ?= rebar3
 HOSTNAME ?= $(shell hostname -s)
 
@@ -15,19 +15,15 @@ rel: config/vars.config rel-es3_1 rel-es3_2 rel-es3_3
 rel-%:
 	$(REBAR) release -n $*
 
-# We run the below in sequence to ensure correct startup
-# TODO: Unsure if this is necessary?
-run:
-	$(MAKE) run-1
-	@sleep 1
-	$(MAKE) run-2
-	@sleep 1
-	$(MAKE) run-3
-	@echo "Done"
+start: start-1 start-2 start-3
 
-run-%:
-	./_build/default/rel/es3_$*/bin/es3_$* start
-	sleep 1
+start-%:
+	HTTP_PORT=898$* ./_build/default/rel/es3_$*/bin/es3_$* start
+
+stop: stop-1 stop-2 stop-3
+
+stop-%:
+	-./_build/default/rel/es3_$*/bin/es3_$* stop
 
 distclean:
 	$(REBAR) clean
